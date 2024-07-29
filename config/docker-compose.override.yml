@@ -1,0 +1,18 @@
+version: '3.4'
+ 
+services:
+# USE LIBRECHAT CONFIG FILE
+  api:
+    volumes:
+    - type: bind
+      source: ./librechat.yaml
+      target: /app/librechat.yaml
+ 
+# ADD OLLAMA
+  ollama:
+    container_name: ollama
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./ollama:/root/.ollama
